@@ -6,11 +6,11 @@ pl = [
         "length": "3:04",
         "artist": "Arctic Monkeys"
     },
-     {
+    {
         "song": "Dance, Dance",
         "length": "3:04",
         "artist": "Fall Out Boys"
-i    },
+    },
     {
         "song": "redbone",
         "length": "4:37",
