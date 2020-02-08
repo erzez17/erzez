@@ -28,6 +28,11 @@ def get():
     return a
 
 
+@api.route('/isalive', methods=['GET'])
+def isalive():
+    return "True"
+
+
 @api.route('/func', methods=['PUT'])
 def put():
     body = request.json
