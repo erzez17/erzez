@@ -10,7 +10,7 @@ pl = [
         "song": "Dance, Dance",
         "length": "3:04",
         "artist": "Fall Out Boys"
-i    },
+    },
     {
         "song": "redbone",
         "length": "4:37",
@@ -26,6 +26,11 @@ api = Flask(__name__)
 def get():
     a = jsonify(pl)
     return a
+
+
+@api.route('/isalive', methods=['GET'])
+def isalive():
+    return "true"
 
 
 @api.route('/func', methods=['PUT'])
