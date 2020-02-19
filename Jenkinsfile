@@ -1,7 +1,6 @@
 pipeline {
     agent any
     stages {
-            stages {
                 stage ('Build') {
                 steps {
                     sh 'docker build -t test:1 .'
@@ -24,6 +23,5 @@ pipeline {
                 sh 'docker run --name erz -p 80:80 -dit erzez/api_erez:1'
             }
         }
-            }
     }
 }
