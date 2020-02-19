@@ -14,9 +14,8 @@ pipeline {
                 }
                 stage('Deploy') {
                 when { expression { return $var }
-              }
-            }
-            steps {
+                }
+                steps {
                 sh 'docker rm -f erz'
                 sh 'docker rmi erzez/api_erez:1'
                 sh 'docker rmi test:1'
