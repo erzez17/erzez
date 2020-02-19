@@ -21,6 +21,7 @@ pipeline {
                 sh 'docker rmi test:1'
                 sh 'docker build -t erzez/api_erez:1'
                 sh 'docker run --name erz -p 80:80 -dit erzez/api_erez:1'
-            }
+                }
+            }          
         }
 }
