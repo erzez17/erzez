@@ -24,5 +24,4 @@ pipeline {
                 sh 'docker run --name erz -p 80:80 -dit erzez/api_erez:1'
             }
         }
-    }
 }
