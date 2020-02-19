@@ -7,9 +7,10 @@ pipeline {
                     }
                 }
                 stage ('Test') {
-                       steps {
-                            sh 'set var = ${./test.sh}'
-                            echo $var
+                steps {
+                    sh 'set var = ${./test.sh}'
+                        echo $var
+                    }
                 }
                 stage('Deploy') {
                 when { expression { return $var }
