@@ -3,7 +3,9 @@ pipeline {
     stages {
                 stage ('Build') {
                 steps {
-                    sh 'docker build -t test:1 .'
+                    sh 'docker build -t erzez/api_erez:test .'
+                    sh 'docker push erzez/api_erez:test'
+                    sh 'docker run --name test -p 80:80 -dit erzez/api_erez:test'
                     }
                 }
                 stage ('Test') {
@@ -16,11 +18,9 @@ pipeline {
                 when { expression { return $var }
                 }
                 steps {
-                sh 'docker rm -f erz'
-                sh 'docker rmi erzez/api_erez:1'
-                sh 'docker rmi test:1'
-                sh 'docker build -t erzez/api_erez:1'
-                sh 'docker run --name erz -p 80:80 -dit erzez/api_erez:1'
+                sh 'docker rm -f test'
+                sh 'docker rmi erzez/api_erez:test'
+                sh 'docker run --name prod -p 80:80 -dit erzez/api_erez:test'
                 }
             }          
         }
