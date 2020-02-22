@@ -30,11 +30,7 @@ def get():
 
 @api.route('/isalive', methods=['GET'])
 def isalive():
-<<<<<<< HEAD
     return "true"
-=======
-    return "True"
->>>>>>> 68ef1c3e587d51007279b4c19d0a4de7684b5251
 
 
 @api.route('/func', methods=['PUT'])
