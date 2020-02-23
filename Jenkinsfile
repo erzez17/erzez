@@ -1,3 +1,4 @@
+#!groovy
 node {
 	stage (‘Build’) {
 		sh 'docker build -t erzez/erez:test .'
