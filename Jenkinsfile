@@ -1,5 +1,5 @@
 #!groovy
-node {
+node{
 	stage(‘Build’) {
 		sh 'docker build -t erzez/erez:test .'
 		sh 'docker push erzez/api_erez:test'
