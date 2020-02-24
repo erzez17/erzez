@@ -1,6 +1,6 @@
 #! /bin/bash
 erez=$(curl -s 'http://localhost:80/isalive')
-if [ $erez = "true" ]
+if [ "$erez" = "true" ]
 then
 	echo "true"
 else
