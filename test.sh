@@ -2,8 +2,8 @@
 erez=$(curl -s 'http://localhost:443/isalive')
 if [ $erez = "true" ]
 then
-	echo "Good"
+	echo "true"
 else
-	echo  "Bad"
+	echo  "false"
 fi 
 
