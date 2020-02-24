@@ -7,6 +7,7 @@ node {
 		sh 'docker run --name test -p 80:80 -dit erzez/api_erez:test'
 	}
 	stage ("Test & deploy") {
+		sh 'yum install git -y'
 		def var = sh (script: "./test.sh", returnStdout: true)
 		echo "${var}"
 		if ( "${var}" == "true" ) {
