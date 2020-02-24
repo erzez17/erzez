@@ -9,7 +9,7 @@ node {
 	stage ("Test & deploy") {
 		def var = sh (script: "./test.sh", returnStdout: true)
 		echo "${var}"
-		if ("${var}" == "true") {
+		if ( "${var}" == "true" ) {
 			sh 'docker rm -f test'
                 	sh 'docker rmi erzez/api_erez:test'
 			sh 'docker build -t erzez/erez:prod'
