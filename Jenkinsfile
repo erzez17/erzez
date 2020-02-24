@@ -6,10 +6,8 @@ node {
 		sh 'docker tag erez:test erzez/api_erez:test'
 		sh 'docker run --name test -p 80:80 -dit erzez/api_erez:test'
 	}
-	stage ("Test") {
-		def var = sh(script: './test.sh', returnStdout: true)
-	}
-	stage ("Deploy") {
+	stage ("Test & deploy") {
+		def var = sh (script: "./test.sh", returnStdout: true)
 		if (${var} == 'true') {
 			sh 'docker rm -f test'
                 	sh 'docker rmi erzez/api_erez:test'
