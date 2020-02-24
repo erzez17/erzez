@@ -3,7 +3,7 @@ node {
 		deleteDir()
 		checkout scm
 		sh 'docker build -t erez:test .'
-		sh 'docekr tag erez:test erzez/api_erez:test'
+		sh 'docker tag erez:test erzez/api_erez:test'
 		sh 'docker push erzez/api_erez:test'
 		sh 'docker run --name test -p 80:80 -dit erzez/api_erez:test'
 	}
