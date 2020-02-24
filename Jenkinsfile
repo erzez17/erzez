@@ -10,6 +10,7 @@ node {
 		def var = sh (script: "./test.sh", returnStdout: true)
 	}
 	stage ("Deploy") {
+		echo "${var}"
 		if ("${var}" == 'true') {
 			sh 'docker rm -f test'
                 	sh 'docker rmi erzez/api_erez:test'
