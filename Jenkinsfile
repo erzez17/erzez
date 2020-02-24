@@ -5,9 +5,9 @@ node {
 		sh 'docker build -t erez:test .'
 		sh 'docker tag erez:test erzez/api_erez:test'
 		sh 'docker run --name test -p 80:80 -dit erzez/api_erez:test'
+		sh 'docker ps'
 	}
 	stage ("Test & deploy") {
-		sh 'ls /home/jenkins | grep a'
 		def var = sh (script: "./test.sh", returnStdout: true)
 		echo "${var}"
 		if ( "${var}" == "true" ) {
