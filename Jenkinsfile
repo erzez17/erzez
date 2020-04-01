@@ -19,7 +19,6 @@ node {
 	}
 	stage ("Deploy") {
 		sh 'docker build -t erzez/api_prod:latest .'
-		sh 'docker push erzez/api_prod:latest'
 		sh 'docker rm -f prod'
 		sh 'docker run --name prod -p 80:80 -dit erzez/api_prod:latest'
 	}
