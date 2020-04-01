@@ -9,7 +9,7 @@ pl = [
     {
         "song": "Dance, Dance",
         "length": "3:04",
-        "artist": "Fall Out Boys"
+        "artist": "Fall Out Boy"
     },
     {
         "song": "redbone",
