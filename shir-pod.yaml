@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shir  
+spec:
+  containers:
+  - name: shirush
+    image: erzez/api_erez:1
+    ports:
+     - containerPort: 80
