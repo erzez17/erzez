@@ -1,7 +1,7 @@
 #! /bin/bash
 url=$1
 
-erez=$(curl -s "$url/isalive")
+erez=$(curl -s "http://$url/isalive")
 if [ "$erez" = "true" ]
 then
 	echo "true"

@@ -1,6 +1,6 @@
 node {
 
-	API_ENDPOINT="http://1.1.1.1:3000" // insert relevant api endpoint
+	API_ENDPOINT="1.1.1.1:3000" // insert relevant api endpoint
 
 	stage("Build") {
 		deleteDir()
