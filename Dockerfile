@@ -1,6 +1,6 @@
-FROM ubuntu:16.04
+FROM python:3.7.0
 
-RUN apt-get update && apt install -y python-pip && python && pip install flask 
+RUN pip install -r requirements.txt 
 
 COPY . .
 
