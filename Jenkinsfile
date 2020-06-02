@@ -21,8 +21,8 @@ node {
 		kubectl apply -f deploy.yaml --namespace dev
 		"""
 
-		sh 'chmod +x test.sh ${API_ENDPOINT}'
-		def var = sh (script: "./test.sh", returnStdout: true)
+		sh 'chmod +x test.sh'
+		def var = sh (script: "./test.sh ${API_ENDPOINT}", returnStdout: true)
 
 		sh 'kubectl delete -f deploy.yaml'
 
