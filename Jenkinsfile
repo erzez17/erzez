@@ -1,6 +1,6 @@
 node {
 
-	API_ENDPOINT="localhost:30006" // insert relevant api endpoint
+	API_ENDPOINT="ec2-3-127-39-249.eu-central-1.compute.amazonaws.com:30006" // insert relevant api endpoint
 
 	stage("Build") {
 		deleteDir()
