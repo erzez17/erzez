@@ -4,10 +4,10 @@ url=$1
 erez=$(curl -s "http://$url/isalive")
 if [ "$erez" = "true" ]
 then
-	echo "true"
+	echo "Test was successfull!!"
 	exit 0
 else
-	echo  "false"
+	echo  "Test Failed!!"
 	exit 1
 fi 
 
