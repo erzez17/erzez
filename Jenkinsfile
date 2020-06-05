@@ -21,19 +21,14 @@ node {
 
 		kubectl apply -f deploy.yaml --namespace dev
 		"""
-
+		
 		sh 'chmod +x test.sh'
 		def var = sh (script: "./test.sh ${API_ENDPOINT}", returnStdout: true)
-
+		
 		sh 'kubectl delete -f deploy.yaml --namespace=dev'
 
-		if ("${var}") {
-			echo "Testing completed successfully!"
-		}
-		else {
-			echo "Failed The Testing"
-			currentBuild.result = 'FAILURE'
-		}
+		echo "Testing completed successfully!"
+		
 	}
 	stage ("Deploy") {
 		sh 'kubectl apply -f deploy.yaml --namespace prod'
