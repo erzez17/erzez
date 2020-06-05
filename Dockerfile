@@ -1,8 +1,8 @@
 FROM python:3.7.0-alpine
 
-RUN pip install -r ./requirements.txt
-
 COPY . .
+
+RUN pip install -r requirements.txt
 
 CMD ["python", "api.py"]
 
