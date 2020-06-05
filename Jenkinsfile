@@ -1,18 +1,20 @@
 node {
 
-	API_ENDPOINT="1.1.1.1:3000" // insert relevant api endpoint
+	API_ENDPOINT="localhost:443" // insert relevant api endpoint
 
 	stage("Build") {
 		deleteDir()
 		checkout scm
 		// build image with version tag and push
-		sh """ 
-		docker build -t erzez/api_test:${BUILD_NUMBER}
-		
-		docker login erzez --username ? --password ?
 
+		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'DockerHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+		sh """
+		docker build -t erzez/api_test:${BUILD_NUMBER}
+        docker login erzez--username $USERNAME -password $PASSWORD
 		docker push erzez/api_test:${BUILD_NUMBER}
 		"""
+    }
+}
 	}
 	stage("Test") {
 		sh """
