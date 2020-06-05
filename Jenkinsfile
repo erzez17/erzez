@@ -9,9 +9,8 @@ node {
 
 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'DockerHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
 		sh """
-		chmod 777 ./requirements.txt
 		docker build -t erzez/api_test:${BUILD_NUMBER} .
-        docker login erzez--username $USERNAME -password $PASSWORD
+        docker login --username $USERNAME --password $PASSWORD
 		docker push erzez/api_test:${BUILD_NUMBER}
 		"""
         }
