@@ -1,7 +1,7 @@
 #! /bin/bash
 url=$1
 
-erez=$(curl -s "http://$url/isalive")
+erez=$(curl --retry 5 -s "http://$url/isalive")
 if [ "$erez" = "true" ]
 then
 	echo "Test was successfull!!"

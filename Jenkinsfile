@@ -18,11 +18,11 @@ node {
 	stage("Test") {
 		sh """
 		sed \"s/@VERSION/${BUILD_NUMBER}/g\" manifests/deployments/api-deployment.yaml > deploy.yaml
-
 		kubectl apply -f deploy.yaml --namespace dev
-		"""
-		
-		sh 'chmod +x test.sh'
+		chmod +x test.sh
+		sleep 60
+        """
+
 		def var = sh (script: "./test.sh ${API_ENDPOINT}", returnStdout: true)
 		
 		sh 'kubectl delete -f deploy.yaml --namespace=dev'
@@ -34,4 +34,3 @@ node {
 		sh 'kubectl apply -f deploy.yaml --namespace prod'
 	}
 }
-
