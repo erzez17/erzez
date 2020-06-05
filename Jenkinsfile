@@ -20,10 +20,12 @@ node {
 		sed \"s/@VERSION/${BUILD_NUMBER}/g\" manifests/deployments/api-deployment.yaml > deploy.yaml
 		kubectl apply -f deploy.yaml --namespace dev
 		chmod +x test.sh
-		sleep 60
+
+		sleep 30
+
         """
 
-		def var = sh (script: "./test.sh ${API_ENDPOINT}", returnStdout: true)
+		sh "./test.sh ${API_ENDPOINT}"
 		
 		sh 'kubectl delete -f deploy.yaml --namespace=dev'
 
