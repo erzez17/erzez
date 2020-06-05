@@ -13,8 +13,7 @@ node {
         docker login erzez--username $USERNAME -password $PASSWORD
 		docker push erzez/api_test:${BUILD_NUMBER}
 		"""
-    }
-}
+        }
 	}
 	stage("Test") {
 		sh """
