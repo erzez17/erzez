@@ -1,6 +1,6 @@
 node {
 
-	API_ENDPOINT="localhost:443" // insert relevant api endpoint
+	API_ENDPOINT="localhost:80" // insert relevant api endpoint
 
 	stage("Build") {
 		deleteDir()
