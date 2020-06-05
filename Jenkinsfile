@@ -25,7 +25,7 @@ node {
 		sh 'chmod +x test.sh'
 		def var = sh (script: "./test.sh ${API_ENDPOINT}", returnStdout: true)
 
-		sh 'kubectl delete -f deploy.yaml'
+		sh 'kubectl delete -f deploy.yaml --namespace=dev'
 
 		if ("${var}") {
 			echo "Testing completed successfully!"
