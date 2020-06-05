@@ -1,14 +1,31 @@
 node {
+
+	API_ENDPOINT="1.1.1.1:3000" // insert relevant api endpoint
+
 	stage("Build") {
 		deleteDir()
 		checkout scm
-		sh 'docker build -t erzez/api_test:latest .'
+		// build image with version tag and push
+		sh """ 
+		docker build -t erzez/api_test:${BUILD_NUMBER}
+		
+		docker login erzez --username ? --password ?
+
+		docker push erzez/api_test:${BUILD_NUMBER}
+		"""
 	}
 	stage("Test") {
-		sh 'docker run --name test -p 433:80 -dit erzez/api_test:latest'
+		sh """
+		sed \"s/@VERSION/${BUILD_NUMBER}/g\" manifests/deployments/api-deployment.yaml > deploy.yaml
+
+		kubectl apply -f deploy.yaml --namespace dev
+		"""
+
 		sh 'chmod +x test.sh'
-		def var = sh (script: "./test.sh", returnStdout: true)
-		sh 'docker rm -f test'
+		def var = sh (script: "./test.sh ${API_ENDPOINT}", returnStdout: true)
+
+		sh 'kubectl delete -f deploy.yaml'
+
 		if ("${var}") {
 			echo "Testing completed successfully!"
 		}
@@ -18,9 +35,7 @@ node {
 		}
 	}
 	stage ("Deploy") {
-		sh 'docker build -t erzez/api_prod:latest .'
-		sh 'docker rm -f prod'
-		sh 'docker run --name prod -p 80:80 -dit erzez/api_prod:latest'
+		sh 'kubectl apply -f deploy.yaml --namespace prod'
 	}
 }
 
