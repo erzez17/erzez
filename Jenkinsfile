@@ -1,6 +1,6 @@
 node {
 
-	API_ENDPOINT="kube-lb-990898097.eu-central-1.elb.amazonaws.com:30006" // insert relevant api endpoint
+	API_ENDPOINT="kube-lb-990898097.eu-central-1.elb.amazonaws.com/func" // insert relevant api endpoint
 
 	stage("Build") {
 		deleteDir()
