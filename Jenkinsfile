@@ -9,6 +9,7 @@ node {
 
 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'DockerHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
 		sh """
+		sudo chmod 777 /var/run/docker.sock
 		docker build -t erzez/api_test:${BUILD_NUMBER} .
         docker login --username $USERNAME --password $PASSWORD
 		docker push erzez/api_test:${BUILD_NUMBER}
