@@ -26,8 +26,6 @@ node {
         """
 
 		sh "./test.sh ${API_ENDPOINT}"
-		
-		sh 'kubectl delete -f deploy.yaml --namespace=dev'
 
 		echo "Testing completed successfully!"
 		
