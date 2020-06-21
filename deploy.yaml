@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
       - name: flask
-        image: erzez/api_prod:latest
+        image: erzez/api_test:latest
         ports:
         - containerPort: 80
