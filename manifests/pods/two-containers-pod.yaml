@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tusic
+spec:  
+
+  containers:
+
+  - name: container-1
+    image: nginx
+    command: ["/bin/sh"]
+
+  - name: container-2
+    image: ubuntu
+    command: ["/bin/sh"]

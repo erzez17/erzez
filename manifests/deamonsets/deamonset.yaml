@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemon-set-try
+spec:
+  selector:
+    matchLabels:
+      name: daemon-set-try
+  template:
+    metadata:
+      labels:
+        name: daemon-set-try
+    spec:
+      tolerations:
+      # this toleration is to have the daemonset runnable on master nodes
+      # remove it if your masters can't run pods
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      containers:
+      - name: daemon-set-test
+        image: erzez/api_prod:latest
